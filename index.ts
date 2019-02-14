@@ -35,7 +35,7 @@ export class OmdbApiClient {
   }
 
   private _request(query: any): Promise<any> {
-    const options = {
+    const options: any = {
       method: 'GET',
       url: this._baseUrl,
       qs: Object.assign({apiKey: this._apiKey}, query)
