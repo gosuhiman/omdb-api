@@ -1,4 +1,4 @@
-import * as request from "request";
+const request = require('request');
 
 export enum OmdbResultType {
   MOVIE = 'movie',
