@@ -11,25 +11,38 @@ export enum OmdbResultDataType {
   XML = 'xml',
 }
 
+export interface OmdbGetOptions {
+  type?: OmdbResultType;
+  dataType?: OmdbResultDataType;
+}
+
+export interface OmdbSearchOptions {
+  page?: number;
+  type?: OmdbResultType;
+  dataType?: OmdbResultDataType;
+}
+
 export class OmdbApiClient {
   private _baseUrl: string = 'http://www.omdbapi.com/';
 
   constructor(private _apiKey: string) {
-
   }
 
-  get(title: string, type?: OmdbResultType, dataType?: OmdbResultDataType): Promise<any> {
+  get(title: string, options?: OmdbGetOptions): Promise<any> {
+    options = options ? options : {};
     const query: any = {t: title};
-    if (type) query.type = type;
-    if (dataType) query.r = type;
+    if (options.type) query.type = options.type;
+    if (options.dataType) query.r = options.dataType;
+    console.log(query);
     return this._request(query);
   }
 
-  search(title: string, type?: OmdbResultType, page?: number, dataType?: OmdbResultDataType): Promise<any> {
+  search(title: string, options?: OmdbSearchOptions): Promise<any> {
+    options = options ? options : {};
     const query: any = {s: title};
-    if (type) query.type = type;
-    if (dataType) query.r = type;
-    if (page) query.page = page;
+    if (options.page) query.page = options.page;
+    if (options.type) query.type = options.type;
+    if (options.dataType) query.r = options.dataType;
     return this._request(query);
   }
 

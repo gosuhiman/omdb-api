@@ -17,22 +17,25 @@ class OmdbApiClient {
         this._apiKey = _apiKey;
         this._baseUrl = 'http://www.omdbapi.com/';
     }
-    get(title, type, dataType) {
+    get(title, options) {
+        options = options ? options : {};
         const query = { t: title };
-        if (type)
-            query.type = type;
-        if (dataType)
-            query.r = type;
+        if (options.type)
+            query.type = options.type;
+        if (options.dataType)
+            query.r = options.dataType;
+        console.log(query);
         return this._request(query);
     }
-    search(title, type, page, dataType) {
+    search(title, options) {
+        options = options ? options : {};
         const query = { s: title };
-        if (type)
-            query.type = type;
-        if (dataType)
-            query.r = type;
-        if (page)
-            query.page = page;
+        if (options.page)
+            query.page = options.page;
+        if (options.type)
+            query.type = options.type;
+        if (options.dataType)
+            query.r = options.dataType;
         return this._request(query);
     }
     _request(query) {
