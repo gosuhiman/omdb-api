@@ -3,6 +3,7 @@ OMDb API client for node.js
 
 ## Usage
 ````
+const OmdbApiClient = require('open-movie-database-api').OmdbApiClient;
 const client = new OmdbApiClient(<your-registered-api-key>);
 
 client.get('Star Wars')
