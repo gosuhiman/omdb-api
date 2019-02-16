@@ -2,7 +2,7 @@ require('dotenv').config();
 const expect = require('chai').expect;
 
 describe('API Client', () => {
-  const OmdbApiClient = require('../lib/api-client').OmdbApiClient;
+  const OmdbApiClient = require('../lib/index').OmdbApiClient;
   const API_KEY: string = process.env.OMDB_API_KEY;
   const client = new OmdbApiClient(API_KEY);
 
@@ -11,7 +11,8 @@ describe('API Client', () => {
       .then(result => {
         expect(result).to.have.all.keys('Title', 'Year', 'Genre');
       })
-      .catch(() => {});
+      .catch(() => {
+      });
   });
 
   it('search response has more then 3 movies with correct fields', () => {
@@ -20,6 +21,7 @@ describe('API Client', () => {
         expect(results).to.have.lengthOf.at.least(3);
         expect(results[0]).to.have.all.keys('Title', 'Year', 'Genre');
       })
-      .catch(() => {});
+      .catch(() => {
+      });
   });
 });

@@ -24,7 +24,6 @@ class OmdbApiClient {
             query.type = options.type;
         if (options.dataType)
             query.r = options.dataType;
-        console.log(query);
         return this._request(query);
     }
     search(title, options) {
@@ -48,7 +47,7 @@ class OmdbApiClient {
             return request(options, (error, response, body) => {
                 if (error)
                     return reject(error);
-                return resolve(body);
+                return resolve(JSON.parse(body));
             });
         });
     }
