@@ -1,4 +1,4 @@
-# omdb-api
+# omdb-api [![CircleCI](https://circleci.com/gh/gosuhiman/omdb-api/tree/master.svg?style=svg)](https://circleci.com/gh/gosuhiman/omdb-api/tree/master)
 OMDb API client for node.js
 
 ## Usage
