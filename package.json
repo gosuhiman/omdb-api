@@ -17,7 +17,7 @@
     "request": "^2.88.0"
   },
   "devDependencies": {
-    "@types/node": "^11.9.3",
+    "@types/node": "^11.9.4",
     "ts-node": "^8.0.2",
     "typescript": "^3.3.3"
   }
