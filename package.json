@@ -1,5 +1,5 @@
 {
-  "name": "omdb-api",
+  "name": "open-movie-database-api",
   "version": "1.0.0",
   "description": "OMDb API client for node.js",
   "main": "dist/index.js",
@@ -14,6 +14,10 @@
   },
   "author": "gosuhiman <gosuhiman@gmail.com>",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gosuhiman/omdb-api/issues"
+  },
+  "homepage":"https://github.com/gosuhiman/omdb-api#readme",
   "dependencies": {
     "request": "^2.88.0"
   },
