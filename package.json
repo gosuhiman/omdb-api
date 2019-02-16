@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "OMDb API client for node.js",
   "main": "dist/index.js",
-  "types" : "dist/index.d.ts",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc"
   },
@@ -14,10 +14,11 @@
   "author": "gosuhiman",
   "license": "MIT",
   "dependencies": {
-    "request": "^2.88.0",
-    "ts-node": "^8.0.2"
+    "request": "^2.88.0"
   },
   "devDependencies": {
-    "@types/node": "^11.9.4"
+    "@types/node": "^11.9.4",
+    "ts-node": "^8.0.2",
+    "typescript": "^3.3.3"
   }
 }
