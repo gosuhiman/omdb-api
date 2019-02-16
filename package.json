@@ -11,7 +11,7 @@
     "type": "git",
     "url": "git+https://github.com/gosuhiman/omdb-api.git"
   },
-  "author": "gosuhiman",
+  "author": "gosuhiman <gosuhiman@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "request": "^2.88.0"
