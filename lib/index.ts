@@ -22,6 +22,11 @@ export interface OmdbSearchOptions {
   dataType?: OmdbResultDataType;
 }
 
+export interface OmdbRating {
+  Source: string;
+  Value: string;
+}
+
 export interface OmdbGetResult {
   Title: string;
   Year: string;
@@ -37,7 +42,7 @@ export interface OmdbGetResult {
   Country: string;
   Awards: string;
   Poster: string;
-  Ratings: { Source: string; Value: string; }[],
+  Ratings: OmdbRating[],
   Metascore: string;
   imdbRating: string;
   imdbVotes: string;
@@ -50,14 +55,16 @@ export interface OmdbGetResult {
   Response: string;
 }
 
+export interface OmdbSearchResultItem {
+  Title: string;
+  Year: string;
+  imdbID: string;
+  Type: string;
+  Poster: string;
+}
+
 export interface OmdbSearchResult {
-  Search: {
-    Title: string;
-    Year: string;
-    imdbID: string;
-    Type: string;
-    Poster: string;
-  }[];
+  Search: OmdbSearchResultItem[];
   totalResults: string;
   Response: string;
 }
