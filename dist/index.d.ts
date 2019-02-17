@@ -56,7 +56,9 @@ export declare class OmdbApiClient {
     private _apiKey;
     private _baseUrl;
     constructor(_apiKey: string);
-    get(title: string, options?: OmdbGetOptions): Promise<OmdbGetResult>;
-    search(title: string, options?: OmdbSearchOptions): Promise<OmdbSearchResult>;
+    getByTitle(title: string, options?: OmdbGetOptions): Promise<OmdbGetResult>;
+    getByImdbId(imdbId: string, options?: OmdbGetOptions): Promise<OmdbGetResult>;
+    search(title: string, options?: OmdbSearchOptions): Promise<OmdbSearchResult[]>;
+    private _get;
     private _request;
 }

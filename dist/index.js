@@ -17,20 +17,27 @@ class OmdbApiClient {
         this._apiKey = _apiKey;
         this._baseUrl = 'http://www.omdbapi.com/';
     }
-    get(title, options) {
-        options = options ? options : {};
+    getByTitle(title, options) {
         const query = { t: title };
-        if (options.type)
-            query.type = options.type;
-        if (options.dataType)
-            query.r = options.dataType;
-        return this._request(query);
+        return this._get(query, options);
+    }
+    getByImdbId(imdbId, options) {
+        const query = { i: imdbId };
+        return this._get(query, options);
     }
     search(title, options) {
         options = options ? options : {};
         const query = { s: title };
         if (options.page)
             query.page = options.page;
+        if (options.type)
+            query.type = options.type;
+        if (options.dataType)
+            query.r = options.dataType;
+        return this._request(query);
+    }
+    _get(query, options) {
+        options = options ? options : {};
         if (options.type)
             query.type = options.type;
         if (options.dataType)

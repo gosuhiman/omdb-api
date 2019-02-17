@@ -6,8 +6,17 @@ describe('API Client', () => {
   const API_KEY: string = process.env.OMDB_API_KEY;
   const client = new OmdbApiClient(API_KEY);
 
-  it('get response has Title, Year and Genre fields', () => {
-    client.get('Star Wars')
+  it('getByTitle response has Title, Year and Genre fields', () => {
+    client.getByTitle('Star Wars')
+      .then(result => {
+        expect(result).to.have.all.keys('Title', 'Year', 'Genre');
+      })
+      .catch(() => {
+      });
+  });
+
+  it('getByImdbId response has Title, Year and Genre fields', () => {
+    client.getByImdbId('tt0076759')
       .then(result => {
         expect(result).to.have.all.keys('Title', 'Year', 'Genre');
       })
