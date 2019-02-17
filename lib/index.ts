@@ -47,14 +47,19 @@ export interface OmdbGetResult {
   BoxOffice: string;
   Production: string;
   Website: string;
+  Response: string;
 }
 
 export interface OmdbSearchResult {
-  Title: string;
-  Year: string;
-  imdbID: string;
-  Type: string;
-  Poster: string;
+  Search: {
+    Title: string;
+    Year: string;
+    imdbID: string;
+    Type: string;
+    Poster: string;
+  }[];
+  totalResults: string;
+  Response: string;
 }
 
 export class OmdbApiClient {
@@ -73,13 +78,13 @@ export class OmdbApiClient {
     return this._get(query, options);
   }
 
-  search(title: string, options?: OmdbSearchOptions): Promise<OmdbSearchResult[]> {
+  search(title: string, options?: OmdbSearchOptions): Promise<OmdbSearchResult> {
     options = options ? options : {};
     const query: any = {s: title};
     if (options.page) query.page = options.page;
     if (options.type) query.type = options.type;
     if (options.dataType) query.r = options.dataType;
-    return <Promise<OmdbSearchResult[]>>this._request(query);
+    return <Promise<OmdbSearchResult>>this._request(query);
   }
 
   private _get(query: any, options?: OmdbGetOptions): Promise<OmdbGetResult> {
@@ -89,7 +94,7 @@ export class OmdbApiClient {
     return <Promise<OmdbGetResult>>this._request(query);
   }
 
-  private _request(query: any): Promise<OmdbGetResult | OmdbSearchResult[]> {
+  private _request(query: any): Promise<OmdbGetResult | OmdbSearchResult> {
     const options: any = {
       method: 'GET',
       url: this._baseUrl,
