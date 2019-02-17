@@ -63,24 +63,33 @@ export class OmdbApiClient {
   constructor(private _apiKey: string) {
   }
 
-  get(title: string, options?: OmdbGetOptions): Promise<OmdbGetResult> {
-    options = options ? options : {};
+  getByTitle(title: string, options?: OmdbGetOptions): Promise<OmdbGetResult> {
     const query: any = {t: title};
-    if (options.type) query.type = options.type;
-    if (options.dataType) query.r = options.dataType;
-    return <Promise<OmdbGetResult>>this._request(query);
+    return this._get(query, options);
   }
 
-  search(title: string, options?: OmdbSearchOptions): Promise<OmdbSearchResult> {
+  getByImdbId(imdbId: string, options?: OmdbGetOptions): Promise<OmdbGetResult> {
+    const query: any = {i: imdbId};
+    return this._get(query, options);
+  }
+
+  search(title: string, options?: OmdbSearchOptions): Promise<OmdbSearchResult[]> {
     options = options ? options : {};
     const query: any = {s: title};
     if (options.page) query.page = options.page;
     if (options.type) query.type = options.type;
     if (options.dataType) query.r = options.dataType;
-    return <Promise<OmdbSearchResult>>this._request(query);
+    return <Promise<OmdbSearchResult[]>>this._request(query);
   }
 
-  private _request(query: any): Promise<OmdbGetResult | OmdbSearchResult> {
+  private _get(query: any, options?: OmdbGetOptions): Promise<OmdbGetResult> {
+    options = options ? options : {};
+    if (options.type) query.type = options.type;
+    if (options.dataType) query.r = options.dataType;
+    return <Promise<OmdbGetResult>>this._request(query);
+  }
+
+  private _request(query: any): Promise<OmdbGetResult | OmdbSearchResult[]> {
     const options: any = {
       method: 'GET',
       url: this._baseUrl,
