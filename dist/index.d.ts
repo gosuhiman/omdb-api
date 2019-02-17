@@ -44,13 +44,18 @@ export interface OmdbGetResult {
     BoxOffice: string;
     Production: string;
     Website: string;
+    Response: string;
 }
 export interface OmdbSearchResult {
-    Title: string;
-    Year: string;
-    imdbID: string;
-    Type: string;
-    Poster: string;
+    Search: {
+        Title: string;
+        Year: string;
+        imdbID: string;
+        Type: string;
+        Poster: string;
+    }[];
+    totalResults: string;
+    Response: string;
 }
 export declare class OmdbApiClient {
     private _apiKey;
@@ -58,7 +63,7 @@ export declare class OmdbApiClient {
     constructor(_apiKey: string);
     getByTitle(title: string, options?: OmdbGetOptions): Promise<OmdbGetResult>;
     getByImdbId(imdbId: string, options?: OmdbGetOptions): Promise<OmdbGetResult>;
-    search(title: string, options?: OmdbSearchOptions): Promise<OmdbSearchResult[]>;
+    search(title: string, options?: OmdbSearchOptions): Promise<OmdbSearchResult>;
     private _get;
     private _request;
 }
