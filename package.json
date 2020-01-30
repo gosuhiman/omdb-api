@@ -22,7 +22,7 @@
     "request": "^2.88.0"
   },
   "devDependencies": {
-    "@types/mocha": "^5.2.6",
+    "@types/mocha": "^7.0.1",
     "@types/node": "^11.9.4",
     "chai": "^4.2.0",
     "dotenv": "^6.2.0",
