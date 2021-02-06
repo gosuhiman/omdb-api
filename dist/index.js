@@ -54,7 +54,13 @@ class OmdbApiClient {
             return request(options, (error, response, body) => {
                 if (error)
                     return reject(error);
-                return resolve(JSON.parse(body));
+                try {
+                    const obj = JSON.parse(body);
+                    return resolve(obj);
+                }
+                catch (e) {
+                    reject(e);
+                }
             });
         });
     }

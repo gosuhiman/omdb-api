@@ -111,7 +111,12 @@ export class OmdbApiClient {
     return new Promise<any>((resolve, reject) => {
       return request(options, (error: any, response: Response, body: any) => {
         if (error) return reject(error);
-        return resolve(JSON.parse(body));
+        try {
+          const obj = JSON.parse(body);
+          return resolve(obj);
+        } catch (e) {
+          reject(e);
+        }
       });
     });
   }
